@@ -1,6 +1,7 @@
 # RR_FR_SWP_teszt_feladat
 
 Választott API: python-restcountries https://pypi.org/project/python-restcountries/
+
 Program nyelv: Python
 
 PostgreSQL virtuális gépen fut
