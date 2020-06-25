@@ -1,0 +1,1 @@
+# RR_FR_SWP_teszt_feladat
