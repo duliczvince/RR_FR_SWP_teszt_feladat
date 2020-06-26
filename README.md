@@ -8,7 +8,7 @@ Program nyelv: Python
 
 PostgreSQL virtuális gépen fut
 
-Kezelt országadatok: name, languages, flag, currencies, capital, population, region, top_level_domain
+Kezelt országadatok: name, latlng, demonym, borders, capital, population, region, top_level_domain
 
 ***
 
