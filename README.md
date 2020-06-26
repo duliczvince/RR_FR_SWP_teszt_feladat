@@ -1,5 +1,7 @@
 # RR_FR_SWP_teszt_feladat
 
+***
+
 Választott API: python-restcountries https://pypi.org/project/python-restcountries/
 
 Program nyelv: Python
@@ -8,8 +10,10 @@ PostgreSQL virtuális gépen fut
 
 Kezelt országadatok: name, languages, flag, currencies, capital, population, region, top_level_domain
 
-SQL:
 ***
+
+# SQL
+
 
 CREATE DATABASE country_datas
 
@@ -32,11 +36,11 @@ CREATE TABLE country(
 
 	name VARCHAR PRIMARY KEY,
 	
-	languages VARCHAR NOT NULL,
+	latlng VARCHAR NOT NULL,
 	
-	flag VARCHAR NOT NULL,
+	demonym VARCHAR NOT NULL,
 	
-	currencies VARCHAR NOT NULL,
+	borders VARCHAR NOT NULL,
 	
 	capital VARCHAR NOT NULL,
 	
