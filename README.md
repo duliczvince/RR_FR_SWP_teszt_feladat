@@ -2,11 +2,11 @@
 
 ***
 
-Választott API: python-restcountries https://pypi.org/project/python-restcountries/
+Választott API: python-restcountries https://pypi.org/project/python-restcountries/ - több mint 8 adat kellett és ez volt a második api ami ennek a kritériumnak megfelel
 
 Program nyelv: Python
 
-PostgreSQL virtuális gépen fut
+PostgreSQL virtuális gépen fut - minden teszt feladatra virtuális gépet használok
 
 Kezelt országadatok: name, latlng, demonym, borders, capital, population, region, top_level_domain
 
