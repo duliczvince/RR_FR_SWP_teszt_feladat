@@ -22,6 +22,8 @@ def connectToDB():
         clearCountryDB(cursor)
         connection.commit()
 
+
+        #adat kigyűjtés + írás
         country_list = rapi.get_all()
         sumCountry = 0
         countryRowList = []
@@ -62,6 +64,7 @@ def connectToDB():
 def countCountry():
     return len(rapi.get_all())
 
+#eltávolítandó dolgok a str-ből
 def removeChars(text):
     text = str(text)
     removeChars = ['[', ']', "'", '.']
