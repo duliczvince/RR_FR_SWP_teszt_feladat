@@ -22,8 +22,6 @@ def connectToDB():
         clearCountryDB(cursor)
         connection.commit()
 
-
-        #adat kigyűjtés + írás
         country_list = rapi.get_all()
         sumCountry = 0
         countryRowList = []
@@ -31,17 +29,17 @@ def connectToDB():
         while sumCountry < countCountry():
             country = country_list[sumCountry]
             countryRowList.clear()
-            INSERT_QUERY = "INSERT INTO country (name, latlng, demonym, borders, capital, population, region, top_level_domain) VALUES ("
+            INSERT_QUERY = "INSERT INTO country (name, demonym, borders, capital, population, region, top_level_domain, latlng) VALUES ("
             
             countryRowList.extend([
                 removeChars(country.name),
-                removeChars(country.latlng),
                 removeChars(country.demonym),
                 removeChars(country.borders),
                 removeChars(country.capital),
                 removeChars(country.population),
                 removeChars(country.region),
-                removeChars(country.top_level_domain)])
+                removeChars(country.top_level_domain),
+                removeCharsFromLatLng(country.latlng)])
             
             for x in countryRowList:
                 INSERT_QUERY += " '"+str(x)+"',"
@@ -51,6 +49,8 @@ def connectToDB():
             connection.commit()
             
             sumCountry+=1
+
+        countCountryFromDB(cursor)
     
     except (Exception, psycopg2.Error) as error :
         print ("Error while connecting to SQL", error)
@@ -61,10 +61,14 @@ def connectToDB():
             connection.close()
             print("SQL connection is closed")
 
+def countCountryFromDB(cursor):
+    cursor.execute("SELECT COUNT(*) FROM country")
+    c = cursor.fetchall()
+    return print("Ország szám: ", removeChars(c))
+
 def countCountry():
     return len(rapi.get_all())
 
-#eltávolítandó dolgok a str-ből
 def removeChars(text):
     text = str(text)
     removeChars = ['[', ']', "'", '.']
@@ -72,11 +76,21 @@ def removeChars(text):
         text = text.replace(i, '')
     return text
 
+def removeCharsFromLatLng(text):
+    text = str(text)
+    if text == "[]":
+        return (-666,666)
+    else:
+        
+        removeChars = ['[', ']']
+        for i in removeChars : 
+            text = text.replace(i, '')
+        return text
+
 def clearCountryDB(cursor):
     return cursor.execute("truncate table country")
 
 def main():
-    print("Ország szám: ", countCountry())
     connectToDB()
     
 main()
