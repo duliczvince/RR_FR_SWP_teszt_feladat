@@ -36,7 +36,7 @@ CREATE TABLE country(
 
 	name VARCHAR PRIMARY KEY,
 	
-	latlng VARCHAR NOT NULL,
+	latlng POINT NOT NULL,
 	
 	demonym VARCHAR NOT NULL,
 	
